@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EL POLLO LOCO</title>
+  <link rel="icon" type="image/x-icon" href="img/10_additional/icon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="js/classes/drawable-objects-world.class.js"></script>
+  <script src="js/classes/world.class.js"></script>
+  <script src="js/classes/drawable-object.class.js"></script>
+  <script src="js/classes/movable-object.class.js"></script>
+  <script src="js/classes/throwable-object.class.js"></script>
+  <script src="js/classes/keyboard.class.js"></script>
+  <script src="js/classes/statusbar-health.class.js"></script>
+  <script src="js/classes/statusbar-endboss.class.js"></script>
+  <script src="js/classes/statusbar-coin.class.js"></script>
+  <script src="js/classes/statusbar-bottle.class.js"></script>
+  <script src="js/classes/level.class.js"></script>
+  <script src="js/classes/background-object.class.js"></script>
+  <script src="js/classes/character.clas.js"></script>
+  <script src="js/classes/small-chicken.class.js"></script>
+  <script src="js/classes/chicken.class.js"></script>
+  <script src="js/classes/cloud.class.js"></script>
+  <script src="js/classes/coin.class.js"></script>
+  <script src="js/classes/bottle.class.js"></script>
+  <script src="js/classes/bottle-splash.class.js"></script>
+  <script src="js/classes/heart.class.js"></script>
+  <script src="js/classes/endboss.class.js"></script>
+  <script src="js/classes/chicken-dead.class.js"></script>
+  <script src="js/classes/small-chicken-dead.class.js"></script>
+  <script src="js/classes/endscreen.class.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/levels/level1.js"></script>
+</head>
+
+<body onload="init()">
+  <div class="container" id="container">
+
+    <div id="startContainer">
+      <div class="startButtonLine">
+        <button id="startButton" onclick="startGame()">Start Game</button>
+      </div>
+    </div>
+
+    <div class="menuButtonLine" id="menuButtonLine">
+      <button id="settingsButton" class="menuButton" onclick="settings()">
+        <img src="img/10_additional/settings.png" />
+      </button>
+
+      <button id="controlButton" class="menuButton" onclick="control()">
+        <img src="img/10_additional/games.png" />
+      </button>
+
+      <button id="fullscreenButton" class="menuButton" onclick="fullscreen()">
+        <img src="img/10_additional/fullscreen.png" />
+      </button>
+
+      <button id="restartGame" class="menuButton" onclick="reloadPage()">
+        <img src="img/10_additional/restart-game.png" />
+      </button>
+    </div>
+
+    <div onclick="closeMenu()" id="settingsMenu" class="background d-none vis-hidden">
+      <div onclick="dontClosing(event)" id="settings" class="menu">
+        <div class="d-flex alignCenter spaceBetween">
+          <p>SFX</p>
+          <label class="switch">
+            <input onclick="sfxOn()" id="soundToggle" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="d-flex alignCenter spaceBetween">
+          <p>Music</p>
+          <label class="switch">
+            <input type="checkbox" id="musicToggle" onclick="musicOn()" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="closeMenu">
+          <button id="closeButton" onclick="closeMenu()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div onclick="closeMenu()" id="controlMenu" class="background d-none vis-hidden">
+      <div onclick="dontClosing(event)" id="control" class="menu">
+        <div class="d-flex alignCenter spaceBetween">
+          <p>Move Right</p>
+          <img class="controlImage d-none" src="img/10_additional/right-arrow.png" />
+          <img class="controlImageTouch d-none" src="img/10_additional/right-arrow.png" />
+        </div>
+
+        <div class="d-flex alignCenter spaceBetween">
+          <p>Move Left</p>
+          <img class="controlImage d-none" src="img/10_additional/left-arrow.png" />
+          <img class="controlImageTouch d-none" src="img/10_additional/left-arrow.png" />
+        </div>
+
+        <div class="d-flex alignCenter spaceBetween">
+          <p>Jump</p>
+          <img class="controlImage d-none" src="img/10_additional/up-arrow.png" />
+          <img class="controlImageTouch d-none" src="img/10_additional/up-arrow.png" />
+        </div>
+
+        <div class="d-flex alignCenter spaceBetween">
+          <p>Throw Bottle</p>
+          <img class="controlImage d-none" src="img/10_additional/x-button.png" />
+          <img class="controlImageTouch d-none" src="img/10_additional/bottle.png" />
+        </div>
+
+        <div class="closeMenu">
+          <button id="closeButton" onclick="closeMenu()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="rotateScreenOverlay">
+      Please turn your device
+    </div>
+
+    <canvas id="canvas" width="720" height="480"></canvas>
+
+    <div id="hud" class="hud d-none">
+      <div class="panel d-flex alignCenter spaceBetween">
+        <button id="btnLeft">
+          <img src="img/10_additional/left-arrow.png" />
+        </button>
+        <button id="btnRight">
+          <img src="img/10_additional/right-arrow.png" />
+        </button>
+      </div>
+      <div class="panel d-flex alignCenter spaceBetween">
+        <button id="btnJump">
+          <img src="img/10_additional/up-arrow.png" />
+        </button>
+        <button id="btnThrow">
+          <img class="throw" src="img/10_additional/bottle.png" />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
